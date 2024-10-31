@@ -1,0 +1,46 @@
+     @ModelAttribute는 HTTP Body 내용과 HTTP 파라미터의 값들을 Getter, Setter, 생성자를  통해 주입하기 위해 사용한다.
+	 @ModelAttribute는 사용자가 요청시 전달하는 값을 오브젝트 형태로 매핑해주는 어노테이션 	 
+	  또한  model 객체에 자동으로 저장해 준다( 모델에 심기)
+	
+	 요청정보  =>   id=hello&pw=1234   =>  User 객체로 만들어준다
+	 기본생성자와 setter사용함 (반드시 기본생성자와 setter가 준비되어야 한다.)	
+	 Model 객체에 자동으로 저장해 줌  key는 User 첫 글자 소문자형태로 키가 정해짐 	
+	  
+	  
+	  
+	 Model 객체란?	 
+	 MVC2에서 
+	 서블릿과 Jsp간의 데이터를 공유할 목적으로  request를 저장소를 사용하였다 	 
+	 스프링에서는 별도의 Model객체를 제공한다.
+	 Model객체에 jsp(view)에서 사용할 내용을 저장하면 된다.!!
+	 
+	 
+	 
+	 ##MVC2##  서블릿단위의 매핑  ( get, post)	 
+	 서블릿 -> 서비스 -> DAO -> DB
+	 data
+	 request.setAttribute("data" , data);  
+	 request.getRequestDispatcher("WEB-INF/views/view.jsp").forward( request, response );
+	 
+	 	 
+	 ##Spring##   Controller 내에서  매서드 단위의 매핑 
+	 dispather Servlet ( 서블릿을 한 개만 둔다) 
+	 
+	 Controller    - 서비스   - DAO 
+	 (매서드 단위로 매핑)
+	  
+     - controller               -  서비스  -  DAO 
+      @GetMapping("/hi")
+      String method1( Model model){
+         model.AddAttribute("data", data);
+         return "viewName"; 
+      }
+       
+	 
+	 
+	 
+	 
+	 
+	 
+	   
+ 

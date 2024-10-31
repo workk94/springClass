@@ -1,0 +1,42 @@
+서블릿과 설정 파일 초기화 과정
+Tomcat 시작:
+
+Tomcat 서버가 시작되면, 웹 애플리케이션의 web.xml 파일을 읽는다
+context-param 정보를 읽음:
+
+
+context-param 정보를 읽어서 애플리케이션 전역에서 사용할 수 있는 설정을 준비 
+context-param에서 정의된 설정 정보가 DispatcherServlet의 초기화 과정에서 활용
+DispatcherServlet 서블릿 로드:
+
+web.xml에 정의된 DispatcherServlet을 로드  
+이 시점에서 context-param에서 지정한 정보를 바탕으로 Spring의 ApplicationContext를 생성 
+Spring ApplicationContext 생성:  (스프링컨테이너)
+
+
+contextConfigLocation에서 지정한 설정 파일(XML 파일)을 읽어 Spring의 ApplicationContext를 생성 
+DispatcherServlet은 설정 파일에서 정의된 빈(bean)을 초기화하고, 이를 기반으로 요청 처리와 관련된 인프라를 설정합니다.
+이 과정에서 @Controller, @Service 등으로 정의된 컴포넌트가 자동으로 스캔되어 빈으로 등록 
+서블릿의 init-param 읽기:
+
+web.xml에서 서블릿 정의에 설정된 init-param(예: contextConfigLocation)을 읽어 추가적인 초기화 작업을 수행 
+요청 처리 준비 완료:
+
+서블릿이 초기화되고 나면, 애플리케이션이 요청을 처리할 준비가 완료 
+이후 들어오는 모든 HTTP 요청은 이 DispatcherServlet을 통해 처리됨
+
+클라이언트 요청에 따라 해당하는 컨트롤러 메서드가 호출되고, 비즈니스 로직을 처리한 후 적절한 뷰로 응답을 반환함
+
+
+==>요약
+Tomcat이 시작되면 서블릿이 초기화되고
+이 과정에서 Spring 설정 파일을 읽어들이며,
+이후 요청을 처리하는 데 필요한 구성 요소들을 초기화함
+DispatcherServlet은 이렇게 초기화된 구성 요소를 사용하여 클라이언트의 요청을 처리한다
+ 
+ 
+ 
+ <<   context-param과 init-param의 차이  >> 
+
+context-param은 전역 설정을 위한 것 -  하나의 웹프로젝트에서 공유하는 변수  
+init-param은 각 서블릿에 대한 초기화 매개변수  - 하나의  서블릿이  각 각 가지는 변수 

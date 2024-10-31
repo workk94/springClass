@@ -1,0 +1,93 @@
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class MyInitParamServlet extends HttpServlet {
+    private String admin;    // 하나의 서블릿이 공유하는 변수
+    
+
+    @Override
+    public void init() throws ServletException {
+        // init-param 값 가져오기
+        localSetting = getInitParameter("admin");
+        System.out.println("admin  : " + admin);
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        response.getWriter().write("관리자: " + admin);
+    }
+}
+
+////////////////
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!-- Context parameter (Application-wide configuration) -->
+    <context-param>
+        <param-name>appVersion</param-name>
+        <param-value>1.0</param-value>
+    </context-param>
+
+    <!-- Servlet configuration -->
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>com.example.MyServlet</servlet-class>
+        <init-param>
+            <param-name>admin</param-name>
+            <param-value>acorn</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup> <!-- 서블릿을 애플리케이션 시작 시 로드 -->
+    </servlet>
+
+    <!-- Servlet mapping -->
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/myServlet</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+
+
+
+////////////////////
+Context-param 값 얻어오기
+
+
+package com.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class AppServlet extends HttpServlet {
+
+    //최초의 호출 될 때 단한번 호출됨
+    @Override
+    public void init() throws ServletException {
+        // 서블릿 초기화 시 필요한 작업을 수행할 수 있습니다.
+    }
+
+
+    //요청 될 떄 마다 수행됨
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // context-param에서 값을 읽어옴
+        String appVersion = getServletContext().getInitParameter("appVersion");
+
+        // 응답 형식 설정
+        response.setContentType("text/html");
+        response.getWriter().println("<h1>Application Version: " + appVersion + "</h1>");
+    }
+}
+
+
