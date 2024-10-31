@@ -7,7 +7,10 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
+ 	<!--  자바에 DatatSource 인터페이스를 가지고 있음 : 데이터 베이스 커넥션 관리하는 클래스의 약속(인터페이스) -->
  	
+ 	
+ 	<!-- DataSource 인터페이스를 구현한 구현체 -->
 	<bean id="d" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:testdb"></property>

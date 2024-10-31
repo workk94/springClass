@@ -40,7 +40,7 @@ public class ApiController2 {
 	// 데이터 읽는다
 	// json으로 변환
 	// 자바객체로 변환
-	// => @RequestBody 스프링이 해 줌 
+	// => @RequestBody 스프링이 해 	줌 
 	
 	@ResponseBody
 	@RequestMapping( value="/drama" , method=RequestMethod.POST)
