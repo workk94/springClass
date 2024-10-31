@@ -3,9 +3,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+
+
 
 	<bean id="d"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -16,9 +18,5 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="0000"></property>
 	</bean>
-
-	<!-- Component scan 설정 -->
-	<context:component-scan
-		base-package="com.acorn.prac" />
 
 </beans>
