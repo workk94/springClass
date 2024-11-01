@@ -10,14 +10,14 @@ import javax.sql.DataSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class DBTest3 {
+public class DBTEST3 {
 
 	public static void main(String[] args) throws SQLException {
 		
 		//스프링 컨테이너 객체. 독자적으로 돌아간다.
 		//별도의 객체를 만들어 
-//	 ApplicationContext  ac = new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
-	 ApplicationContext  ac = new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/test.xml");
+	 ApplicationContext  ac = new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
+	 //ApplicationContext  ac = new GenericXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/test.xml");
 		
 	 DataSource ds = ac.getBean(DataSource.class);
 		

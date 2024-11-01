@@ -1,0 +1,21 @@
+
+
+API ( Interface )  : 프로그램의 사용법
+자바라이브러리 (  자바API) 
+ 
+
+backend(백앤드 API설계 )
+서버가 데이터를 응답하는 것을 설계하는 것을  API  설계라고 한다
+
+
+URI : 명사형태로 작성
+행위구분: Method type  :  GET  , POST  , PUT  , DELETE 
+
+
+
+
+
+
+ 
+
+
