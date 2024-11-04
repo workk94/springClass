@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="a">
+	
+	<resultMap type="MemberDTO" id="memberResult">
+	<result property="id" column="M_ID"/>
+	<result property="pw" column="M_PW"/>
+	<result property="name" column="M_NAME"/>
+	<result property="tel" column="M_TEL"/>
+	<result property="birthday" column="M_BIRTHDAY"/>
+	<result property="point" column="M_POINT"/>
+	<result property="grade" column="M_GRADE"/>
+	
+	</resultMap>
+
+	<!-- member_tbl_11 전체조회 -->
+	<select id="selectAll" resultMap="memberResult">
+		SELECT M_ID, M_PW, M_NAME, M_TEL, M_BIRTHDAY, NVL(M_POINT, 0) AS M_POINT, NVL(M_GRADE, 0) AS M_GRADE 
+		FROM MEMBER_TBL_11
+	</select>
+	
+	<!-- 이름으로 한명 조회 -->
+	<!-- 여기서 #{} 안에 들어갈것은 dto의 필드명을 사용함 -->
+	<select id="selectOne" resultMap="memberResult" parameterType="String">
+		SELECT * FROM MEMBER_TBL_11 WHERE m_name = #{name}
+	</select>
+	
+	
+	<!-- 회원 삽입 -->
+	<!-- id, pw, name, tel -->
+	<insert id="insert" parameterType="MemberDTO">
+		INSERT INTO MEMBER_TBL_11 (M_ID , M_PW , M_NAME , M_TEL) VALUES (#{id}, #{pw}, #{name}, #{tel})
+	</insert>
+</mapper>

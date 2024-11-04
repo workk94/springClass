@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace : mapper를 구분하는 이름, 식별하기 좋기 위해서 붙여주는 이름 -->
+<mapper namespace="a">
+
+
+	<!-- 모든 회원 정보 조회하기 -->
+	<select id="selectAll" resultType="Member">
+		SELECT *
+		FROM MEMBERACORN
+	</select>
+
+	<!-- 회원 정보 등록하기 -->
+	<insert id="insert" parameterType="Member">
+		INSERT INTO MEMBERACORN (id, pwd, name) VALUES (#{id}, #{pwd}, #{name})
+	</insert>
+	
+	<!-- 회원삭제 -->
+    <delete id="delete"  parameterType="String">
+      delete  from  memberacorn  where id  = #{id}
+    </delete>
+    
+    <!-- 회원변경 -->
+    <update id="update" parameterType="Member">
+    	update memberacorn
+    	set name = #{name}, 
+    		pwd = #{pwd}
+    	where id = #{id}
+    </update>
+    
+    <!-- 회원 한 명 조회 -->
+    
+    <select id="selectOne" resultType="Member" parameterType="String">
+    	select * from memberacorn where id = #{id}
+    </select>
+</mapper>

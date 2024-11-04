@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="c">  
+   
+  
+  <select id="orderOne"    resultType="map"   parameterType="String">
+     select * from ordera where orderno = #{id}
+  </select>
+  
+  
+   <select id="orderselectMap"   resultType="map">
+     select * from ordera
+  </select>
+  
+</mapper>

@@ -1,0 +1,15 @@
+
+<mapper namespace="a"> 
+    <select id="selectAll" resultType="Member">
+        SELECT *
+        FROM memberacorn       
+    </select>
+ 
+     
+     <insert id="insert"  parameterType="Member">
+      INSERT INTO memberacorn
+          (id, pwd, name)
+      VALUES
+          (#{id}, #{pwd}, #{name})
+      </insert> 
+</mapper>

@@ -1,0 +1,28 @@
+package com.acorn.day5;
+ 
+
+@Repository
+public class MemberRepository  {
+
+    @Autowired
+    private SqlSession session;
+    
+    
+    //매퍼들을 구분하는 이름
+    private static String namespace = "a.";
+     
+ 
+    public List<Member> selectAll() throws Exception {
+        return session.selectList(namespace+"selectAll");
+    } // List<E> selectList(String statement)
+
+   
+    
+    
+    public int insert(Member dto) throws Exception {
+        return session.insert(namespace+"insert", dto);
+    } // int insert(String statement, Object parameter)
+
+     
+}
+ 
