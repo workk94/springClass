@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acorn.OrderMapper">
+	<select id="selectOrder" resultType="Map">
+		SELECT *
+		FROM tbl_test_order
+		o
+		JOIN tbl_test_customer c
+		ON c.ID = o.ID
+	</select>
+
+
+	<select id="selectOrderOne" parameterType="String"
+		resultType="Map">
+		select *
+		from tbl_test_order o
+		right outer join tbl_test_customer c
+		on o.id = c.id
+		where o.ocode = #{id}
+	</select>
+</mapper>
