@@ -12,7 +12,7 @@ public class Restaurant {
     private String addressName;
     private String distance;
     private String placeUrl;
-    private String xCoord;
-    private String yCoord;
+    private String longitude; // longitude 경도 x 
+    private String latitude; // latitude 위도 y
     private String categoryName;
 }

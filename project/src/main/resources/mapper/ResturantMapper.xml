@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="a">
+	<insert id="insertRestaurant"
+		parameterType="Restaurant">
+		INSERT INTO restaurant_tbl (restaurant_id, place_name, address_name,
+		distance, place_url, longitude, latitude, category_name)
+		VALUES (restaurant_seq.NEXTVAL, #{placeName}, #{addressName}, #{distance},
+		#{placeUrl}, #{longitude}, #{latitude}, #{categoryName})
+	</insert> 
+	<select id="selectRestaurantByCategory">
+			
+	
+		
+	</select>
+</mapper>
